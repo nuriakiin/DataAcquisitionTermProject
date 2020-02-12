@@ -1,0 +1,36 @@
+function [prediction] = UserBasedKNN(datasetName,userId,movieId)
+Data = readmatrix(datasetName);
+[Edited] = Edit(Data);
+userRates=Edited(userId,:);
+[AllDistancesOther] = CorrelationForNew(Edited,userRates);
+[row2,column2]=size(AllDistancesOther);
+[a,index] =  sort(AllDistancesOther(1,:),'descend');
+
+
+prediction =0;
+end
+
+
+
+function [guess] = calcPrediction(a,index,AllData,userRates,k)
+[row,column]=size(a);
+actualRateColumn1 = 0;
+
+sumOfValuesC1=0;
+
+sumOfSimsC1=0;
+
+count=0;
+for i=1:column
+    actualRateColumn1 = TrainingSet(index(1,i),TestSetIndexes(xx,1));
+
+    [Mean1]= Mean(TrainingSet(index(1,i),:));
+    if((actualRateColumn1)~= -1 && count<k)
+    sumOfValuesC1 = sumOfValuesC1 + (a(1,i)*(actualRateColumn1-Mean1));
+    sumOfSimsC1= sumOfSimsC1+ a(1,i);
+    count = count +1;
+    end
+end
+[MeanP] = Mean(TestSet(xx,:));
+Prediction1= (MeanP + (sumOfValuesC1/sumOfSimsC1));
+end

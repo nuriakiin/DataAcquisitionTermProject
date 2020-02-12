@@ -1,0 +1,26 @@
+﻿@model Movie
+
+@*<h1>@Model.MovieTitle</h1>
+
+    <h1>User Based Prediction  = @ViewData["userBasedPrediction"] </h1>
+    <h1>Item Based Prediction = @ViewData["itemBasedPrediction"] </h1>*@
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">User Based Prediction for @Model.MovieTitle</h5>
+                    <p class="card-text">@ViewData["userBasedPrediction"]</p>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Item Based Prediction for @Model.MovieTitle</h5>
+                    <p class="card-text">@ViewData["itemBasedPrediction"]</p>
+
+                </div>
+            </div>
+        </div>
+    </div>

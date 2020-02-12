@@ -1,0 +1,8 @@
+function [prediction] = ItemBasedKNN(datasetName,userId,movieId)
+Data = readmatrix(datasetName);
+[ItemEdited] = transpose(Edit(Data));
+userRates = userRates=Edited(userId,:);
+
+[CosineSimMatrix]= CosineSim(ItemEdited,TestSetItem);
+end
+

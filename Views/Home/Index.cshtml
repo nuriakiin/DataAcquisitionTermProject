@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Movie>
+@{ 
+    int count = 20 - Convert.ToInt32(ViewData["RateMovieCount"]);
+}
+@if (Convert.ToInt32(ViewData["RateMovieCount"]) < 20)
+{
+    <div class="jumbotron">
+        <h1 class="display-4">Hello, @ViewData["SessionUser"]</h1>
+        <p class="lead">We will take some minutes, You have to rate at least 20 movies to get prediction .<br /> @count Movie Remains. </p>
+
+
+    </div>
+}
+
+
+
+<h3 class="p-2 bg-primary text-white text-center">Movies</h3>
+
+<div class="text-center">
+
+    @{
+        ViewBag.searches = new string[] { "MovieTitle" };
+        ViewBag.sorts = new string[] { "MovieTitle", "MovieRate", "MovieId" };
+
+    }
+    @await Html.PartialAsync("PageOptions", Model)
+
+
+</div>
+<br />
+<br />
+
+<div class="container-fluid mt-3">
+    <div class="row">
+
+        <div class="col font-weight-bold ">Movie Name</div>
+        <div class="col font-weight-bold text-center ">IMDB Url</div>
+        <div class="col font-weight-bold text-center">Rate This</div>
+        @if (Convert.ToInt32(ViewData["RateMovieCount"]) >= 20)
+        {
+            <div class="col font-weight-bold text-center">Get Prediction</div>
+        }
+        </div>
+    @foreach (Movie p in Model)
+    {
+
+<div class="row p-2">
+
+    <div class="col">@p.MovieTitle</div>
+    <div class="col text-center"><a href="@p.IMDBUrl">Go to IMDB Page</a></div>
+    <div class="col text-rigt">
+        <form asp-action="Index" method="post">
+            <div class="form-group">
+                <select class="form-group col-md-4" id="exampleFormControlSelect1" name="selectedRate">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <input type="hidden" name="MovieId" value="@p.MovieId" />
+                <button type="submit" class="btn btn-info">Rate</button>
+
+            </div>
+        </form>
+
+
+    </div>
+    @if (Convert.ToInt32(ViewData["RateMovieCount"]) >= 20)
+    {
+        <form asp-controller="Home" asp-action="KnnPrediction" method="post">
+            <input type="hidden" name="key" value="@p.MovieId" />
+            <div class="col text-center">
+                <button type="submit" class="btn btn-info">Rate Prediction</button>
+            </div>
+        </form>
+
+    }
+
+</div>
+    }
+    <br /><br />
+    <div class="text-center">
+        @await Html.PartialAsync("Pages", Model)
+    </div>
+
+
+</div>

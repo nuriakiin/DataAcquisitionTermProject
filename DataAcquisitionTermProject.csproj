@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20191212125855_InitialCreate.cs" />
+    <Compile Remove="Migrations\20191212125855_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20191219140633_InitialCreate.cs" />
+    <Compile Remove="Migrations\20191219140633_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20191219140900_InitialCreate.cs" />
+    <Compile Remove="Migrations\20191219140900_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20191219185504_InitialCreate.cs" />
+    <Compile Remove="Migrations\20191219185504_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20191219191043_InitialCreate.cs" />
+    <Compile Remove="Migrations\20191219191043_InitialCreate.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="MLApp.dll">
+      <Guid>c36e46ab-6a81-457b-9f91-a7719a06287f</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Dataset\u.user" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
+  </ItemGroup>
+
+
+
+</Project>
